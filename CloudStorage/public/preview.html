@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Предосмотр файла</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <h1>Предосмотр файла</h1>
+    <div id="previewContainer">
+        <!-- Контейнер для изображений, видео или других файлов -->
+    </div>
+
+    <p><a href="/storage">Вернуться в хранилище</a></p>
+
+    <script>
+        // Получаем URL для файла с параметра query
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileUrl = urlParams.get('file'); // URL файла для предосмотра
+
+        if (fileUrl) {
+            const previewContainer = document.getElementById('previewContainer');
+            const fileExtension = fileUrl.split('.').pop().toLowerCase();
+
+            if (['jpg', 'jpeg', 'png', 'gif', 'bmp'].includes(fileExtension)) {
+                previewContainer.innerHTML = `<img src="${fileUrl}" alt="Preview Image">`;
+            } else if (['mp4', 'webm', 'ogg'].includes(fileExtension)) {
+                previewContainer.innerHTML = `<video controls><source src="${fileUrl}" type="video/${fileExtension}">Ваш браузер не поддерживает видео.</video>`;
+            } else {
+                previewContainer.innerHTML = `<p>Файл не поддерживает предосмотр.</p>`;
+            }
+        } else {
+            document.getElementById('previewContainer').innerHTML = '<p>Неверный файл для предосмотра.</p>';
+        }
+    </script>
+
+</body>
+</html>
