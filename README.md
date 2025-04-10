@@ -20,7 +20,7 @@ Telegram-бот для хранения и скачивания файлов с 
 🚀 Как запустить
 1. Клонируй репозиторий
 
-git clone https://github.com/your-username/telegram-cloud-storage-bot.git
+git clone https://github.com/Nakosix/cloudstorage
 cd telegram-cloud-storage-bot
 
 2. Установи зависимости
